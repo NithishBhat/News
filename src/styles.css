@@ -1,0 +1,1022 @@
+/* Apple-inspired visual layer over Bootstrap 5: borderless elevated cards,
+   iOS surface palette, segmented controls, tight SF-style type. */
+
+:root {
+  --cn-accent: #b4713c;
+  --cn-rain: #5b8dd6;
+  --up: #30a14e;
+  --down: #e0453a;
+}
+
+[data-bs-theme='light'] {
+  --bs-body-bg: #f5f5f7;
+  --surface: #ffffff;
+  --surface-2: #e9e9ef;
+  --bs-tertiary-bg: #f2f2f7;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+}
+
+[data-bs-theme='dark'] {
+  --bs-body-bg: #0b0b0d;
+  --bs-body-color: #f2f2f7;
+  --bs-secondary-color: #98989f;
+  --bs-border-color: #33333a;
+  --surface: #1c1c1e;
+  --surface-2: #2c2c2e;
+  --bs-tertiary-bg: #2c2c2e;
+  --card-shadow: none;
+  --up: #30d158;
+  --down: #ff453a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.min-w-0 {
+  min-width: 0;
+}
+
+/* ---------- surfaces ---------- */
+.card {
+  --bs-card-bg: var(--surface);
+  --bs-card-border-color: transparent;
+  border: 0;
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+}
+
+.card-header {
+  background: transparent;
+  border: 0;
+  padding: 16px 18px 4px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bs-secondary-color);
+}
+
+.card .list-group-item {
+  background: transparent;
+  border-color: var(--bs-border-color);
+}
+
+.navbar.bg-body {
+  background: color-mix(in srgb, var(--bs-body-bg) 82%, transparent) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--bs-border-color) !important;
+}
+
+/* ---------- brand / headings ---------- */
+.brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 1.25rem;
+}
+
+.brand-bean {
+  width: 30px;
+  height: 30px;
+  vertical-align: -7px;
+}
+
+.brand-sub {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--bs-secondary-color);
+  letter-spacing: 0;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- segmented controls (iOS style) ---------- */
+.segmented {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface-2);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.segmented .btn,
+.segmented .nav-link {
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--bs-secondary-color);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  white-space: nowrap;
+  transition: color 0.12s ease;
+}
+
+.segmented .btn:hover,
+.segmented .nav-link:hover {
+  color: var(--bs-body-color);
+}
+
+.segmented .btn.active,
+.segmented .nav-link.active {
+  background: var(--surface);
+  color: var(--bs-body-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+.nav-pills.segmented .nav-link.active {
+  background: var(--surface);
+}
+
+/* ---------- news feed ---------- */
+.news-card {
+  transition: transform 0.12s ease, background-color 0.12s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--surface) 92%, var(--bs-body-color) 8%);
+}
+
+.news-title {
+  font-size: 1.02rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  height: calc(2 * 1.35em);
+  color: var(--bs-body-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-snippet {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  height: calc(2 * 1.45em);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* tinted iOS-style category pills */
+.badge.cat-coffee,
+.badge.cat-markets,
+.badge.cat-climate,
+.badge.cat-world {
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+
+.badge.cat-coffee {
+  background: color-mix(in srgb, var(--cn-accent) 18%, transparent);
+  color: var(--cn-accent);
+}
+
+.badge.cat-markets {
+  background: color-mix(in srgb, var(--up) 16%, transparent);
+  color: var(--up);
+}
+
+.badge.cat-climate {
+  background: color-mix(in srgb, var(--cn-rain) 18%, transparent);
+  color: var(--cn-rain);
+}
+
+.badge.cat-world {
+  background: color-mix(in srgb, var(--bs-secondary-color) 18%, transparent);
+  color: var(--bs-secondary-color);
+}
+
+/* ---------- weather hero (Apple Weather) ---------- */
+.wx-hero {
+  border-radius: 20px;
+  padding: 18px 16px 16px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.wx-hero-loading {
+  background: linear-gradient(180deg, #54606e, #97a1aa);
+  min-height: 340px;
+}
+
+.wx-search input {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  outline: none;
+  backdrop-filter: blur(6px);
+}
+
+.wx-search input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.wx-search input:focus {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.wx-top {
+  text-align: center;
+  padding: 18px 0 20px;
+}
+
+.wx-city {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.wx-temp {
+  font-size: 4.4rem;
+  font-weight: 200;
+  line-height: 1.05;
+  margin-left: 0.35em;
+}
+
+.wx-cond {
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.wx-hilo {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+.wx-section {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  backdrop-filter: blur(8px);
+}
+
+.wx-section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.wx-hourly {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.wx-hourly::-webkit-scrollbar {
+  display: none;
+}
+
+.wx-hour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 44px;
+  flex-shrink: 0;
+}
+
+.wx-hour-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.wx-hour-icon {
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.wx-hour-rain {
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: #a7e0ff;
+}
+
+.wx-hour-temp {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.wx-daily {
+  display: flex;
+  flex-direction: column;
+}
+
+.wx-day {
+  display: grid;
+  grid-template-columns: 46px 40px 30px 1fr 30px;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.88rem;
+}
+
+.wx-day:last-child {
+  border-bottom: 0;
+}
+
+.wx-day-name {
+  font-weight: 600;
+}
+
+.wx-day-icon {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.wx-day-rain {
+  font-style: normal;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #a7e0ff;
+}
+
+.wx-day-lo {
+  text-align: right;
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+.wx-day-hi {
+  font-weight: 600;
+}
+
+.wx-range {
+  position: relative;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.wx-range-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #6ec6ff, #ffd60a, #ff9f0a);
+}
+
+.wx-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.wx-tile {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  backdrop-filter: blur(8px);
+}
+
+.wx-tile-label {
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+.wx-tile-value {
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.wx-tile-value small {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.outlook-success {
+  border-left: 3px solid var(--up);
+}
+
+.outlook-warning {
+  border-left: 3px solid #d9a03c;
+}
+
+.outlook-danger {
+  border-left: 3px solid var(--down);
+}
+
+/* ---------- market panel ---------- */
+.market-updated {
+  font-size: 0.72rem;
+  color: var(--bs-secondary-color);
+  font-variant-numeric: tabular-nums;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.market-section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bs-secondary-color);
+}
+
+.market-footnote {
+  font-size: 0.72rem;
+}
+
+.currency-select {
+  width: auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 24px 2px 8px;
+  border-radius: 8px;
+  border-color: var(--bs-border-color);
+  background-color: var(--surface-2);
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.quote-card {
+  background: var(--bs-tertiary-bg);
+  border-radius: 14px;
+  padding: 10px 14px;
+}
+
+.quote-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.quote-card-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--bs-secondary-color);
+}
+
+.quote-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.quote-pill-up {
+  background: color-mix(in srgb, var(--up) 16%, transparent);
+  color: var(--up);
+}
+
+.quote-pill-down {
+  background: color-mix(in srgb, var(--down) 16%, transparent);
+  color: var(--down);
+}
+
+.quote-card-price {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.quote-card-meta {
+  font-size: 0.7rem;
+  color: var(--bs-secondary-color);
+}
+
+.delta {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.delta-up {
+  color: var(--up);
+}
+
+.delta-down {
+  color: var(--down);
+}
+
+.price-chart {
+  height: 260px;
+}
+
+.sessions-table {
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  --bs-table-bg: transparent;
+}
+
+.sessions-table th {
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bs-secondary-color);
+  border-bottom-width: 1px;
+}
+
+.sessions-table td {
+  padding-block: 5px;
+}
+
+.session-pct {
+  display: block;
+  font-size: 0.66rem;
+  line-height: 1.1;
+}
+
+/* ---------- grower resources ---------- */
+.resource-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--bs-tertiary-bg);
+  text-decoration: none;
+  color: var(--bs-body-color);
+  transition: transform 0.1s ease, background-color 0.12s ease;
+}
+
+.resource-item:hover {
+  transform: translateY(-1px);
+  background: var(--surface-2);
+}
+
+.resource-item:hover .resource-arrow {
+  color: var(--cn-accent);
+  transform: translate(1px, -1px);
+}
+
+.resource-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border-radius: 9px;
+}
+
+.resource-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.resource-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.resource-desc {
+  font-size: 0.73rem;
+  color: var(--bs-secondary-color);
+  line-height: 1.3;
+}
+
+.resource-arrow {
+  color: var(--bs-secondary-color);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+/* ---------- crop planner ---------- */
+.planner-geo-note {
+  font-size: 0.75rem;
+  background: transparent;
+  border-top: 1px solid var(--bs-border-color);
+}
+
+.region-select {
+  width: auto;
+  min-width: 210px;
+  font-size: 0.88rem;
+  border-radius: 10px;
+  border-color: var(--bs-border-color);
+  background-color: var(--surface-2);
+}
+
+.place-search {
+  position: relative;
+  min-width: 210px;
+}
+
+.place-search .form-control,
+.place-search .btn {
+  border-radius: 10px;
+  border-color: var(--bs-border-color);
+  background-color: var(--surface-2);
+}
+
+.place-search .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.place-search .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.place-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  max-height: 260px;
+  overflow-y: auto;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 14px;
+}
+
+.place-result {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--bs-border-color);
+  padding: 9px 14px;
+  font-size: 0.85rem;
+  color: var(--bs-body-color);
+  cursor: pointer;
+}
+
+.place-result:last-child {
+  border-bottom: 0;
+}
+
+.place-result:hover {
+  background: var(--bs-tertiary-bg);
+}
+
+.place-result small {
+  color: var(--bs-secondary-color);
+  font-size: 0.72rem;
+}
+
+.legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  color: var(--bs-secondary-color);
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.legend-rain {
+  background: linear-gradient(180deg, #86aede, #4a7fb5);
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: 148px repeat(12, minmax(42px, 1fr));
+  min-width: 700px;
+}
+
+@media (max-width: 900px) {
+  .card-body:has(> .cal-grid) {
+    overflow-x: auto;
+  }
+}
+
+.cal-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 8px 6px 0;
+  white-space: nowrap;
+}
+
+.cal-label-icon {
+  width: 20px;
+  text-align: center;
+}
+
+.cal-month {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--bs-secondary-color);
+  padding: 4px 0 8px;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+.cal-month.is-now {
+  text-decoration: underline;
+  text-decoration-color: var(--cn-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.cal-cell {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--bs-border-color);
+  cursor: pointer;
+  position: relative;
+}
+
+.cal-month.is-focus,
+.cal-cell.is-focus {
+  background: color-mix(in srgb, var(--cn-accent) 10%, transparent);
+}
+
+.cal-month.is-focus {
+  color: var(--cn-accent);
+}
+
+.seg {
+  height: 14px;
+  width: 100%;
+  opacity: 0.92;
+}
+
+.seg-start {
+  border-radius: 7px 0 0 7px;
+  margin-left: 3px;
+}
+
+.seg-end {
+  border-radius: 0 7px 7px 0;
+  margin-right: 3px;
+}
+
+.seg-start.seg-end {
+  border-radius: 7px;
+}
+
+.cal-rain-cell {
+  height: 56px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.rain-col {
+  width: 55%;
+  max-width: 22px;
+  background: linear-gradient(180deg, #86aede, #4a7fb5);
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 2px;
+}
+
+.cal-irr-cell {
+  justify-content: center;
+  font-size: 0.72rem;
+  letter-spacing: -2px;
+}
+
+.focus-chip {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-left: 3px solid var(--bs-border-color);
+  border-radius: 10px;
+  padding: 8px 12px;
+  background: var(--bs-tertiary-bg);
+  font-size: 0.85rem;
+  max-width: 300px;
+}
+
+.focus-chip small {
+  display: block;
+  color: var(--bs-secondary-color);
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
+.focus-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.focus-stat {
+  background: var(--bs-tertiary-bg);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.focus-stat-label {
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bs-secondary-color);
+}
+
+.focus-stat-value {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* live rain forecast strip */
+.fx-strip {
+  display: flex;
+  gap: 3px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.fx-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.fx-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  min-width: 26px;
+  flex: 1;
+}
+
+.fx-track {
+  width: 14px;
+  height: 44px;
+  background: var(--bs-tertiary-bg);
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.fx-fill {
+  width: 100%;
+  background: linear-gradient(180deg, #86aede, var(--cn-rain));
+  border-radius: 4px 4px 0 0;
+}
+
+.fx-mm {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--cn-rain);
+  height: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.fx-dow {
+  font-size: 0.6rem;
+  color: var(--bs-secondary-color);
+}
+
+.fx-summary {
+  font-size: 0.8rem;
+  margin-top: 8px;
+  color: var(--bs-secondary-color);
+}
+
+/* ideal condition range bars */
+.ideal-row {
+  margin-bottom: 16px;
+}
+
+.ideal-row:last-child {
+  margin-bottom: 0;
+}
+
+.ideal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.ideal-ok {
+  color: var(--up);
+  font-variant-numeric: tabular-nums;
+}
+
+.ideal-off {
+  color: #d9a03c;
+  font-variant-numeric: tabular-nums;
+}
+
+.ideal-track {
+  position: relative;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--bs-tertiary-bg);
+}
+
+.ideal-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: color-mix(in srgb, var(--up) 35%, transparent);
+  border-radius: 4px;
+}
+
+.ideal-marker {
+  position: absolute;
+  top: -4px;
+  width: 3px;
+  height: 14px;
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+.ideal-marker.ok {
+  background: var(--up);
+}
+
+.ideal-marker.off {
+  background: #d9a03c;
+}
+
+.ideal-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.66rem;
+  color: var(--bs-secondary-color);
+  margin-top: 3px;
+}
+
+.ideal-range {
+  font-weight: 600;
+}
+
+/* ---------- mobile ---------- */
+@media (max-width: 991.98px) {
+  .price-chart {
+    height: 220px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .news-snippet {
+    -webkit-line-clamp: 1;
+    height: calc(1 * 1.45em);
+  }
+
+  .wx-temp {
+    font-size: 3.6rem;
+  }
+}

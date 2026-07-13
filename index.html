@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/bean.svg" />
+    <title>Coffee News — market, weather &amp; headlines for coffee growers</title>
+    <meta
+      name="description"
+      content="Live Arabica and Robusta prices, local weather with rainfall forecasts, and coffee-industry headlines."
+    />
+    <script>
+      // set theme before first paint to avoid a flash
+      document.documentElement.setAttribute(
+        'data-bs-theme',
+        localStorage.getItem('cn-theme') || 'dark'
+      );
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
