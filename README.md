@@ -1,5 +1,7 @@
 # Coffee News
 
+**Live demo:** https://news-six-inky.vercel.app
+
 Coffee News is a one-page daily dashboard for coffee growers. It puts what a grower checks every morning in one place: coffee and market news, the local weather forecast with warnings for frost, drought, heavy rain and leaf rust, live arabica and robusta coffee prices, and a crop calendar showing when to plant, prune and harvest in different growing regions.
 
 Everything comes from free public sources (news RSS feeds, Open-Meteo for weather, Barchart and Yahoo Finance for prices), so no API keys are needed. It's built with React and a small Node backend, and it's set up to deploy on Vercel.
